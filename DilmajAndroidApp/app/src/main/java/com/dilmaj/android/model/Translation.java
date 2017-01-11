@@ -8,4 +8,8 @@ public class Translation extends Term {
     public Translation(String contents) {
         super(contents);
     }
+
+    public Translation() {
+        super();
+    }
 }

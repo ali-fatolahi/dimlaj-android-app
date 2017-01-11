@@ -8,4 +8,8 @@ public class Word extends Term {
     public Word(String contents) {
         super(contents);
     }
+
+    public Word() {
+        super();
+    }
 }

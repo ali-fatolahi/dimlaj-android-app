@@ -29,6 +29,6 @@ public class WordWatcher implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        binding.setWord(new Word(editable.toString()));
+        //binding.setWord(new Word(editable.toString()));
     }
 }

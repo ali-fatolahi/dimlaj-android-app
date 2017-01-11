@@ -1,5 +1,10 @@
 package com.dilmaj.android.model;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.dilmaj.android.BR;
+
 /**
  * Created by Ali_Fatolahi on 1/7/2017.
  */

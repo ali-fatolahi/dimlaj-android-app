@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="word" type="com.dilmaj.android.model.Word"/>
-        <variable name="translation" type="com.dilmaj.android.model.Translation"/>
+        <variable name="word" type="com.dilmaj.android.observables.ObservableWord"/>
+        <variable name="translation" type="com.dilmaj.android.observables.ObservableTranslation"/>
     </data>
     <LinearLayout
         android:orientation="vertical"
@@ -14,13 +14,15 @@
             android:id="@+id/wordView"/>
         <EditText android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wordInput"/>
+            android:id="@+id/wordInput"
+            android:text="@={word.contents}"/>
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{translation.contents}"
             android:id="@+id/translationView"/>
         <EditText android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/translationInput"/>
+            android:id="@+id/translationInput"
+            android:text="@={translation.contents}"/>
     </LinearLayout>
 </layout>

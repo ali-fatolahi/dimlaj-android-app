@@ -30,6 +30,6 @@ public class TranslationWatcher implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        binding.setTranslation(new Translation(s.toString()));
+        //binding.setTranslation(new Translation(s.toString()));
     }
 }
