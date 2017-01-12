@@ -2,21 +2,16 @@ package com.dilmaj.android;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
 
 import com.dilmaj.android.databinding.MainBinding;
-import com.dilmaj.android.handlers.HandlersSetup;
-import com.dilmaj.android.model.Translation;
-import com.dilmaj.android.model.Word;
+import com.dilmaj.android.observables.ObservableTranslation;
+import com.dilmaj.android.observables.ObservableWord;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.times;
@@ -32,7 +27,7 @@ import static org.powermock.api.mockito.PowerMockito.whenNew;
  * Created by Ali_Fatolahi on 1/7/2017.
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({DataBindingUtil.class, HandlersSetup.class, MainActivity.class})
+@PrepareForTest({DataBindingUtil.class, MainActivity.class})
 public class MainActivityTest {
     @Test
     public void testOnCreate() throws Exception {
@@ -43,13 +38,11 @@ public class MainActivityTest {
         mockStatic(DataBindingUtil.class);
         when(DataBindingUtil.setContentView(eq(mainActivity), anyInt())).thenReturn(binding);
 
-        Word word = mock(Word.class);
-        Translation translation = mock(Translation.class);
+        ObservableWord word = mock(ObservableWord.class);
+        ObservableTranslation translation = mock(ObservableTranslation.class);
 
-        whenNew(Word.class).withAnyArguments().thenReturn(word);
-        whenNew(Translation.class).withAnyArguments().thenReturn(translation);
-
-        mockStatic(HandlersSetup.class);
+        whenNew(ObservableWord.class).withAnyArguments().thenReturn(word);
+        whenNew(ObservableTranslation.class).withAnyArguments().thenReturn(translation);
 
         mainActivity.onCreate(bundle);
 
@@ -57,6 +50,5 @@ public class MainActivityTest {
         verify(binding, times(1)).setTranslation(translation);
 
         verifyStatic(times(2));
-        HandlersSetup.addEditTextWatcher(any(EditText.class), any(TextWatcher.class));
     }
 }
